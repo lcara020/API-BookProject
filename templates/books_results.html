@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #54acf3, #69e56d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            align-content: center;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 10px;
+            align-content: center;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+        }
+        .custom-button {
+            background-color: #5c6bc0;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .custom-button:hover {
+            background-color: #3f51b5;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><u>Your Book Results </u></h1>
+        {% if length == 0 %}
+            <p>No books available with those characteristics.</p>
+        {% else %}
+            {% for i in list_of_books %}
+                <h3>{{i[1]}}</h3>
+               <p>By: {{i[2]}}</p>
+                <img src="{{i[0]}}" alt="">
+            {% endfor %}
+        {% endif %}
+        <a href="{{ url_for('index') }}" class="custom-button">Try Another Search</a>
+    </div>
+</body>
+</html>
